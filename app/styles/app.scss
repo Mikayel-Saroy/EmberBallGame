@@ -1,0 +1,30 @@
+@import "reeset";
+
+
+.ball-container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  //background-image: url("/images/repeated-square.png");
+}
+
+
+
+$ball-size: 50px;
+
+.ball {
+  width: $ball-size;
+  height:$ball-size;
+  background-color: gold;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.mushroom {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  position: absolute;
+}

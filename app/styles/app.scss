@@ -28,3 +28,11 @@ $ball-size: 50px;
   border-radius: 50%;
   position: absolute;
 }
+
+.score {
+  position: absolute;
+  font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+  font-size: 21px;
+  left: 50%;
+  margin-left: -135px;
+}

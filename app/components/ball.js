@@ -4,13 +4,15 @@ import {htmlSafe} from '@ember/template';
 import {action} from '@ember/object';
 import {inject as service} from '@ember/service';
 
+const NAVBAR_HEIGHT = 90;
+
 export default class BallComponent extends Component {
   @service Coordinates;
   @tracked left = 695;
   @tracked top = 385;
 
   interval = null;
-  step = 1;
+  step = 2;
   speed = 2;
   elementSize = 0;
 
@@ -37,8 +39,8 @@ export default class BallComponent extends Component {
   }
 
   @action relocateTheBall() {
-    this.Coordinates.mushroomX = Math.floor((Math.random() * (window.innerWidth - 50)) + 1);
-    this.Coordinates.mushroomY = Math.floor((Math.random() * (window.innerHeight - 50)) + 1);
+    this.Coordinates.mushroomX = Math.floor((Math.random() * (window.innerWidth - 140)) + 1);
+    this.Coordinates.mushroomY = Math.floor((Math.random() * (window.innerHeight - 140)) + 1);
   }
 
   @action ballInserted(element) {
@@ -67,13 +69,30 @@ export default class BallComponent extends Component {
     });
   }
 
+  reset() {
+    this.Coordinates.player1Score = 0;
+    this.Coordinates.player2Score = 0;
+  };
+
+  checkIfWin() {
+    if (this.Coordinates.player1Score === 5) {
+      alert("Player 1 Won the Game.");
+      this.reset();
+    } else if (this.Coordinates.player2Score === 5) {
+      alert("Player 2 Won the Game.");
+      this.reset();
+    }
+  };
+
   @action checkIfCrossed() {
     if ((this.Coordinates.mushroomY <= this.top + 50 && this.Coordinates.mushroomY >= this.top - 50) &&
       (this.Coordinates.mushroomX <= this.left + 50 && this.Coordinates.mushroomX >= this.left - 50)) {
       if (this.color === this.Coordinates.player1Color) {
         this.Coordinates.player1Score++;
+        this.checkIfWin();
       } else {
-        this.Coordinates.player2Score++
+        this.Coordinates.player2Score++;
+        this.checkIfWin();
       }
       this.relocateTheBall();
     }
@@ -85,7 +104,7 @@ export default class BallComponent extends Component {
 
   moveUp() {
     this.interval = setInterval(() => {
-      if (this.canMoveUp()) {
+      if (this.canMove.up()) {
         return this.stopMove();
       }
       this.top -= this.step;
@@ -95,7 +114,7 @@ export default class BallComponent extends Component {
 
   moveDown() {
     this.interval = setInterval(() => {
-      if (this.canMoveDown()) {
+      if (this.canMove.down()) {
         return this.stopMove();
       }
       this.top += this.step;
@@ -105,7 +124,7 @@ export default class BallComponent extends Component {
 
   moveLeft() {
     this.interval = setInterval(() => {
-      if (this.canMoveLeft()) {
+      if (this.canMove.left()) {
         return this.stopMove();
       }
       this.left -= this.step;
@@ -115,7 +134,7 @@ export default class BallComponent extends Component {
 
   moveRight() {
     this.interval = setInterval(() => {
-      if (this.canMoveRight()) {
+      if (this.canMove.right()) {
         return this.stopMove();
       }
       this.left += this.step;
@@ -123,19 +142,12 @@ export default class BallComponent extends Component {
     }, this.speed);
   }
 
-  canMoveRight() {
-    return this.left >= window.innerWidth - this.elementSize;
-  }
-
-  canMoveLeft() {
-    return this.left <= 0
-  }
-
-  canMoveDown() {
-    return this.top >= window.innerHeight - this.elementSize - 90;
-  }
-
-  canMoveUp() {
-    return this.top <= 0;
+  get canMove() {
+    return {
+      right: () => this.left >= window.innerWidth - this.elementSize,
+      left: () => this.left <= 0,
+      down: () => this.top >= window.innerHeight - this.elementSize - NAVBAR_HEIGHT,
+      up: () => this.top <= 0,
+    }
   }
 }

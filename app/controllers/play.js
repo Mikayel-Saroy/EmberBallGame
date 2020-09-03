@@ -3,7 +3,7 @@ import {tracked} from "@glimmer/tracking";
 import { inject as service } from "@ember/service"
 
 export default class PlayController extends Controller {
-  @service Coordinates;
+  @service Global;
 
   player2controls = {
     UP: 'KeyW',

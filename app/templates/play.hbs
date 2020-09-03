@@ -1,11 +1,12 @@
 <div class="ball-container">
-  <Header />
-  <Ball @color={{this.Coordinates.player1Color}}/>
+  <Header/>
+  <Ball @color={{this.Global.player1Color}} class="1"/>
+  <Ball @color={{this.Global.player2Color}} @controls={{player2controls}}/>
   <Mushroom/>
-  <Ball @color={{this.Coordinates.player2Color}} @controls={{player2controls}}/>
+  <Lightning/>
 
   <div class="score">
-    <p class="player1score">Player 1: {{this.Coordinates.player1Score}}</p>
-    <p class="player2score">Player 2: {{this.Coordinates.player2Score}}</p>
+    <p>Player 1: {{this.Global.player1Score}}</p>
+    <p>Player 2: {{this.Global.player2Score}}</p>
   </div>
 </div>

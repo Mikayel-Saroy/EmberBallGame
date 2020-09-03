@@ -5,11 +5,12 @@ import {action} from '@ember/object';
 import {inject as service} from '@ember/service';
 
 const NAVBAR_HEIGHT = 90;
+const MATH_FLOOR_LIMIT = 140;
 
 export default class BallComponent extends Component {
-  @service Coordinates;
-  @tracked left = 695;
-  @tracked top = 385;
+  @service Global;
+  @tracked left = Math.floor((Math.random() * (window.innerWidth - MATH_FLOOR_LIMIT)) + 1);
+  @tracked top = Math.floor((Math.random() * (window.innerHeight - MATH_FLOOR_LIMIT)) + 1);
 
   interval = null;
   step = 2;
@@ -20,13 +21,6 @@ export default class BallComponent extends Component {
     return this.args.color || 'gold';
   }
 
-  get getBallStyle() {
-    if (this.color === this.Coordinates.player1Color) {
-      return htmlSafe(`transform: translate(${this.left}px, ${this.top}px); background-color: ${this.color}`);
-    } else {
-      return htmlSafe(`transform: translate(${this.left}px, ${this.top}px); background-color: ${this.color}`);
-    }
-  }
 
   get controls() {
     const initialControls = {
@@ -39,8 +33,8 @@ export default class BallComponent extends Component {
   }
 
   @action relocateTheBall() {
-    this.Coordinates.mushroomX = Math.floor((Math.random() * (window.innerWidth - 140)) + 1);
-    this.Coordinates.mushroomY = Math.floor((Math.random() * (window.innerHeight - 140)) + 1);
+    this.Global.mushroomX = Math.floor((Math.random() * (window.innerWidth - MATH_FLOOR_LIMIT)) + 1);
+    this.Global.mushroomY = Math.floor((Math.random() * (window.innerHeight - MATH_FLOOR_LIMIT)) + 1);
   }
 
   @action ballInserted(element) {
@@ -70,28 +64,28 @@ export default class BallComponent extends Component {
   }
 
   reset() {
-    this.Coordinates.player1Score = 0;
-    this.Coordinates.player2Score = 0;
+    this.Global.player1Score = 0;
+    this.Global.player2Score = 0;
   };
 
   checkIfWin() {
-    if (this.Coordinates.player1Score === 5) {
+    if (this.Global.player1Score === 5) {
       alert("Player 1 Won the Game.");
       this.reset();
-    } else if (this.Coordinates.player2Score === 5) {
+    } else if (this.Global.player2Score === 5) {
       alert("Player 2 Won the Game.");
       this.reset();
     }
   };
 
   @action checkIfCrossed() {
-    if ((this.Coordinates.mushroomY <= this.top + 50 && this.Coordinates.mushroomY >= this.top - 50) &&
-      (this.Coordinates.mushroomX <= this.left + 50 && this.Coordinates.mushroomX >= this.left - 50)) {
-      if (this.color === this.Coordinates.player1Color) {
-        this.Coordinates.player1Score++;
+    if ((this.Global.mushroomY <= this.top + 50 && this.Global.mushroomY >= this.top - 50) &&
+      (this.Global.mushroomX <= this.left + 50 && this.Global.mushroomX >= this.left - 50)) {
+      if (this.color === this.Global.player1Color) {
+        this.Global.player1Score++;
         this.checkIfWin();
       } else {
-        this.Coordinates.player2Score++;
+        this.Global.player2Score++;
         this.checkIfWin();
       }
       this.relocateTheBall();

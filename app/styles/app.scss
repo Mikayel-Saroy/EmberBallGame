@@ -1,5 +1,56 @@
 @import "reeset";
 
+$item-size: 50px;
+$lightning-size: 50px;
+
+// === General ===
+
+h3 {
+  color: steelblue;
+  font-size: 30px;
+  padding-bottom: 40px;
+}
+
+p {
+  font-size: 21px;
+}
+
+button {
+  background-color: steelblue;
+  height: 30px;
+  width: 120px;
+  border-radius: 10px;
+  outline: none;
+  margin-left: 30px;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: darkgrey;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+
+// === ROUTES ===
+//Route - Welcome
+.welcome {
+  margin-top: 70px;
+}
+
+.welcome .text h3 {
+  text-align: center;
+}
+
+.welcome .text .line2 {
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+//Route - Play
 .ball-container {
   position: fixed;
   left: 0;
@@ -10,24 +61,6 @@
   background-image: url("/images/repeated-square.png");
 }
 
-
-$ball-size: 50px;
-
-.ball {
-  width: $ball-size;
-  height: $ball-size;
-  background-color: gold;
-  border-radius: 50%;
-  position: absolute;
-}
-
-.mushroom {
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  position: absolute;
-}
-
 .score {
   position: absolute;
   font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
@@ -35,12 +68,36 @@ $ball-size: 50px;
   margin: 10px 0 0 10px;
 }
 
-.mushroomLoc {
-  position: absolute;
+//Route - About
+.about {
+  text-align: center;
+  margin-top: 70px;
+}
+
+.about .line2 {
+  padding-bottom: 50px;
 }
 
 
-// Header Styles
+// === COMPONENTS ===
+//Component Ball
+.ball {
+  width: $item-size;
+  height: $item-size;
+  background-color: gold;
+  border-radius: 50%;
+  position: absolute;
+}
+
+//Component Mushroom
+.mushroom {
+  height: $item-size;
+  width: $item-size;
+  border-radius: 50%;
+  position: absolute;
+}
+
+//Component Header
 .head {
   background-color: steelblue;
   height: 90px;
@@ -79,65 +136,7 @@ $ball-size: 50px;
   margin-left: 600px;
 }
 
-//...
-
-h3 {
-  color: steelblue;
-  font-size: 30px;
-  padding-bottom: 40px;
-}
-
-p {
-  font-size: 21px;
-}
-
-button {
-  background-color: steelblue;
-  height: 30px;
-  width: 120px;
-  border-radius: 10px;
-  outline: none;
-  margin-left: 30px;
-  margin-top: 20px;
-}
-
-button:hover {
-  background-color: darkgrey;
-}
-
-a {
-  color: black;
-  text-decoration: none;
-}
-
-
-//Welcome Styles
-.welcome {
-  margin-top: 70px;
-}
-
-.welcome .text h3 {
-  text-align: center;
-}
-
-.welcome .text .line2 {
-  text-align: center;
-  padding-bottom: 50px;
-}
-
-
-/*About Styles*/
-.about {
-  text-align: center;
-  margin-top: 70px;
-}
-
-.about .line2 {
-  padding-bottom: 50px;
-}
-
-
-/*Component Styles*/
+//Component Play-Button
 .play_button {
   text-align: center;
   font-size: 20px;
@@ -148,6 +147,7 @@ a {
   margin-left: -40px;
 }
 
+//Component About-Button
 .about_button {
   text-align: center;
   font-size: 20px;
@@ -156,4 +156,11 @@ a {
 
 .about_button a {
   margin-left: -40px;
+}
+
+// Component Lightning
+.lightning {
+  position: absolute;
+  height: $lightning-size;
+  width: $lightning-size;
 }

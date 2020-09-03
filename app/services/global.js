@@ -16,4 +16,7 @@ export default class GlobalService extends Service {
 
   @tracked player2Score = 0;
   @tracked player2Color = "green";
+
+  @tracked win = false;
+  @tracked winner = "PLAYER ?";
 }

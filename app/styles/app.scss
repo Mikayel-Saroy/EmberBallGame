@@ -51,6 +51,19 @@ a {
 }
 
 //Route - Play
+.gameOverPage {
+  margin-top: 180px;
+  text-align: center;
+  font-family: Courier, serif;
+}
+
+.gameOverPage h3 {
+  font-size: 80px;
+}
+.gameOverPage p {
+  font-size: 50px;
+}
+
 .ball-container {
   position: fixed;
   left: 0;
@@ -82,8 +95,8 @@ a {
 // === COMPONENTS ===
 //Component Ball
 .ball {
-  width: $item-size;
-  height: $item-size;
+  //width: $item-size;
+  //height: $item-size;
   background-color: gold;
   border-radius: 50%;
   position: absolute;

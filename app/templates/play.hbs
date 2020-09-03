@@ -1,12 +1,19 @@
-<div class="ball-container">
-  <Header/>
-  <Ball @color={{this.Global.player1Color}} class="1"/>
-  <Ball @color={{this.Global.player2Color}} @controls={{player2controls}}/>
-  <Mushroom/>
-  <Lightning/>
-
-  <div class="score">
-    <p>Player 1: {{this.Global.player1Score}}</p>
-    <p>Player 2: {{this.Global.player2Score}}</p>
+{{#if this.Global.win}}
+  <div class="gameOverPage">
+    <h3>GAME OVER</h3>
+    <p>{{this.Global.winner}} WON THE GAME!</p>
   </div>
-</div>
+{{else}}
+  <div class="ball-container">
+    <Header/>
+    <Ball @color={{this.Global.player1Color}} class="1"/>
+    <Ball @color={{this.Global.player2Color}} @controls={{player2controls}}/>
+    <Mushroom/>
+    <Lightning/>
+
+    <div class="score">
+      <p>Player 1: {{this.Global.player1Score}}</p>
+      <p>Player 2: {{this.Global.player2Score}}</p>
+    </div>
+  </div>
+{{/if}}

@@ -1,22 +1,21 @@
 @import "reeset";
 
-
 .ball-container {
   position: fixed;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
+  background-color: #cccccc;
   //background-image: url("/images/repeated-square.png");
 }
-
 
 
 $ball-size: 50px;
 
 .ball {
   width: $ball-size;
-  height:$ball-size;
+  height: $ball-size;
   background-color: gold;
   border-radius: 50%;
   position: absolute;
@@ -35,4 +34,8 @@ $ball-size: 50px;
   font-size: 21px;
   left: 50%;
   margin-left: -135px;
+}
+
+.mushroomLoc {
+  position: absolute;
 }

@@ -5,9 +5,9 @@ import {action} from '@ember/object';
 import {inject as service} from '@ember/service';
 
 export default class BallComponent extends Component {
-  @tracked top = 100;
-  @tracked left = 100;
-  @service ballCoordinates;
+  @service Coordinates;
+  @tracked left = this.Coordinates.player1X;
+  @tracked top = this.Coordinates.player1Y;
 
   interval = null;
   step = 1;
@@ -32,10 +32,14 @@ export default class BallComponent extends Component {
     return this.args.controls ? this.args.controls : initialControls;
   }
 
-  @action
-  ballInserted(element) {
+  @action relocateTheBall() {
+    this.Coordinates.mushroomX = Math.floor((Math.random() * (window.innerWidth - 50)) + 1);
+    this.Coordinates.mushroomY = Math.floor((Math.random() * (window.innerHeight - 50)) + 1);
+  }
+
+  @action ballInserted(element) {
     this.elementSize = element.offsetWidth;
-    const mushroom = document.getElementById('mushroom');
+    // const mushroom = document.getElementById('mushroom');
 
     document.addEventListener('keydown', (event) => {
       switch (event.code) {
@@ -61,6 +65,14 @@ export default class BallComponent extends Component {
     });
   }
 
+  @action checkIfCrossed() {
+    if ((this.Coordinates.mushroomY <= this.top + 50 && this.Coordinates.mushroomY >= this.top - 50) &&
+      (this.Coordinates.mushroomX <= this.left + 50 && this.Coordinates.mushroomX >= this.left - 50)) {
+      this.Coordinates.player1Score++;
+      this.relocateTheBall();
+    }
+  }
+
   stopMove() {
     clearInterval(this.interval);
   }
@@ -71,13 +83,7 @@ export default class BallComponent extends Component {
         return this.stopMove();
       }
       this.top -= this.step;
-      if (this.top === this.ballCoordinates.mushroomYCoord + 50) {
-        if (this.color === 'blue') {
-          this.ballCoordinates.player2Score += 1;
-        } else if (this.color === 'gold') {
-          this.ballCoordinates.player1Score += 1;
-        }
-      }
+      this.checkIfCrossed();
     }, this.speed);
   }
 
@@ -87,13 +93,7 @@ export default class BallComponent extends Component {
         return this.stopMove();
       }
       this.top += this.step;
-      if (this.top === this.ballCoordinates.mushroomYCoord - 50) {
-        if (this.color === 'blue') {
-          this.ballCoordinates.player2Score += 1;
-        } else if (this.color === 'gold') {
-          this.ballCoordinates.player1Score += 1;
-        }
-      }
+      this.checkIfCrossed();
     }, this.speed);
   }
 
@@ -103,13 +103,7 @@ export default class BallComponent extends Component {
         return this.stopMove();
       }
       this.left -= this.step;
-      if (this.left === this.ballCoordinates.mushroomXCoord + 50) {
-        if (this.color === 'blue') {
-          this.ballCoordinates.player2Score += 1;
-        } else if (this.color === 'gold') {
-          this.ballCoordinates.player1Score += 1;
-        }
-      }
+      this.checkIfCrossed();
     }, this.speed);
   }
 
@@ -119,13 +113,7 @@ export default class BallComponent extends Component {
         return this.stopMove();
       }
       this.left += this.step;
-      if (this.left === this.ballCoordinates.mushroomXCoord - 50) {
-        if (this.color === 'blue') {
-          this.ballCoordinates.player2Score += 1;
-        } else if (this.color === 'gold') {
-          this.ballCoordinates.player1Score += 1;
-        }
-      }
+      this.checkIfCrossed();
     }, this.speed);
   }
 

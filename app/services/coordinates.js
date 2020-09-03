@@ -10,7 +10,10 @@ export default class CoordinatesService extends Service {
   @tracked player1Score = 0;
   @tracked player1X = 100;
   @tracked player1Y = 300;
-  // @tracked player2X = 900;
-  // @tracked player2Y = 100;
-  // @tracked player2Score = 0;
+  @tracked player1Color = "darkred";
+
+  @tracked player2Score = 0;
+  @tracked player2X = 900;
+  @tracked player2Y = 100;
+  @tracked player2Color = "green";
 }

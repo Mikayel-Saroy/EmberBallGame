@@ -6,8 +6,8 @@ import {inject as service} from '@ember/service';
 
 export default class BallComponent extends Component {
   @service Coordinates;
-  @tracked left = this.Coordinates.player1X;
-  @tracked top = this.Coordinates.player1Y;
+  @tracked left = 695;
+  @tracked top = 385;
 
   interval = null;
   step = 1;
@@ -19,7 +19,11 @@ export default class BallComponent extends Component {
   }
 
   get getBallStyle() {
-    return htmlSafe(`transform: translate(${this.left}px, ${this.top}px); background-color: ${this.color}`);
+    if (this.color === this.Coordinates.player1Color) {
+      return htmlSafe(`transform: translate(${this.left}px, ${this.top}px); background-color: ${this.color}`);
+    } else {
+      return htmlSafe(`transform: translate(${this.left}px, ${this.top}px); background-color: ${this.color}`);
+    }
   }
 
   get controls() {
@@ -39,8 +43,6 @@ export default class BallComponent extends Component {
 
   @action ballInserted(element) {
     this.elementSize = element.offsetWidth;
-    // const mushroom = document.getElementById('mushroom');
-
     document.addEventListener('keydown', (event) => {
       switch (event.code) {
         case this.controls.UP:
@@ -68,7 +70,11 @@ export default class BallComponent extends Component {
   @action checkIfCrossed() {
     if ((this.Coordinates.mushroomY <= this.top + 50 && this.Coordinates.mushroomY >= this.top - 50) &&
       (this.Coordinates.mushroomX <= this.left + 50 && this.Coordinates.mushroomX >= this.left - 50)) {
-      this.Coordinates.player1Score++;
+      if (this.color === this.Coordinates.player1Color) {
+        this.Coordinates.player1Score++;
+      } else {
+        this.Coordinates.player2Score++
+      }
       this.relocateTheBall();
     }
   }
@@ -126,7 +132,7 @@ export default class BallComponent extends Component {
   }
 
   canMoveDown() {
-    return this.top >= window.innerHeight - this.elementSize;
+    return this.top >= window.innerHeight - this.elementSize - 90;
   }
 
   canMoveUp() {

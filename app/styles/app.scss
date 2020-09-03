@@ -6,8 +6,8 @@
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: #cccccc;
-  //background-image: url("/images/repeated-square.png");
+  //background-color: #cccccc;
+  background-image: url("/images/repeated-square.png");
 }
 
 
@@ -32,10 +32,128 @@ $ball-size: 50px;
   position: absolute;
   font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
   font-size: 21px;
-  left: 50%;
-  margin-left: -135px;
+  margin: 10px 0 0 10px;
 }
 
 .mushroomLoc {
   position: absolute;
+}
+
+
+// Header Styles
+.head {
+  background-color: steelblue;
+  height: 90px;
+}
+
+.head a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.head span {
+  padding-top: 33px;
+}
+
+.head a:hover {
+  color: lightgrey;
+}
+
+.h_welcome {
+  position: absolute;
+  font-family: Zapfino, serif;
+  font-size: 20px;
+  margin-top: 7px;
+  margin-left: 40px;
+}
+
+.h_play {
+  position: absolute;
+  font-size: 21px;
+  margin-left: 370px;
+}
+
+.h_about {
+  position: absolute;
+  font-size: 21px;
+  margin-left: 600px;
+}
+
+//...
+
+h3 {
+  color: steelblue;
+  font-size: 30px;
+  padding-bottom: 40px;
+}
+
+p {
+  font-size: 21px;
+}
+
+button {
+  background-color: steelblue;
+  height: 30px;
+  width: 120px;
+  border-radius: 10px;
+  outline: none;
+  margin-left: 30px;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: darkgrey;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+
+//Welcome Styles
+.welcome {
+  margin-top: 70px;
+}
+
+.welcome .text h3 {
+  text-align: center;
+}
+
+.welcome .text .line2 {
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+
+/*About Styles*/
+.about {
+  text-align: center;
+  margin-top: 70px;
+}
+
+.about .line2 {
+  padding-bottom: 50px;
+}
+
+
+/*Component Styles*/
+.play_button {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 35px;
+}
+
+.play_button a {
+  margin-left: -40px;
+}
+
+.about_button {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 35px;
+}
+
+.about_button a {
+  margin-left: -40px;
 }

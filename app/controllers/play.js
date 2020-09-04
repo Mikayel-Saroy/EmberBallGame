@@ -19,7 +19,8 @@ const COLOR_SET_COLOR_NAMES = [
   "yellow", "yellowgreen", "green", "lightseagreen",
   "blue", "blueviolet", "palevioletred", "violet",
 ];
-const ERROR_MESSAGE_COLOR = "CHOOSE COLOR"
+const ERROR_MESSAGE_COLOR = "CHOOSE COLOR";
+const MATH_FLOOR_LIMIT = 140;
 
 export default class PlayController extends Controller {
   @service Global;
@@ -105,5 +106,16 @@ export default class PlayController extends Controller {
     DOWN: 'KeyS',
     LEFT: 'KeyA',
     RIGHT: 'KeyD',
+  }
+
+  @action reStartTheGame() {
+    this.Global.mushroomX = Math.floor((Math.random() * (window.innerWidth - MATH_FLOOR_LIMIT)) + 1);
+    this.Global.mushroomY = Math.floor((Math.random() * (window.innerHeight - MATH_FLOOR_LIMIT)) + 1);
+    this.Global.lightningX = Math.floor((Math.random() * (window.innerWidth - MATH_FLOOR_LIMIT)) + 1);
+    this.Global.lightningY = Math.floor((Math.random() * (window.innerHeight - MATH_FLOOR_LIMIT)) + 1);
+    this.Global.player1Score = 0;
+    this.Global.player2Score = 0;
+    this.Global.win = false;
+    this.Global.winner = "";
   }
 }

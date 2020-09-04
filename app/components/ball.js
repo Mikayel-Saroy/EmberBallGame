@@ -74,8 +74,6 @@ export default class BallComponent extends Component {
   }
 
   reset() {
-    this.Global.player1Score = 0;
-    this.Global.player2Score = 0;
     this.speed = INITIAL_SPEED;
     this.ballHeight = INITIAL_SIZE;
     this.ballGrowth = 0;

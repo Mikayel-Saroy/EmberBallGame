@@ -2,6 +2,7 @@
   <div class="gameOverPage">
     <h3>GAME OVER</h3>
     <p>{{this.Global.winner}} WON THE GAME!</p>
+    <button {{on "click" this.reStartTheGame}}>PLAY AGAIN</button>
   </div>
 {{else if this.Global.playerNamesValidationError}}
   <div class="validationPage">

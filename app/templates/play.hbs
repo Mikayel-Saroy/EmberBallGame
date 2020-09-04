@@ -3,17 +3,150 @@
     <h3>GAME OVER</h3>
     <p>{{this.Global.winner}} WON THE GAME!</p>
   </div>
+{{else if this.Global.playerNamesValidationError}}
+  <div class="validationPage">
+    <h3>ENTER PLAYERS NAME & COLOR</h3>
+    <div>
+      <label>Player 1: </label>
+      <div class="inputBox"
+           style="border: 3px solid {{this.box1Color}};">
+        {{input type="text"
+                class="player-input"
+                value=this.nameA
+                placeholder="Enter name for Player 1"}}
+      </div>
+      <p class="errorMessageLine">{{this.box1ErrorMessage}}</p>
+    </div>
+    <div>
+      <label>Player 2: </label>
+      <div class="inputBox"
+           style="border: 3px solid {{this.box2Color}};">
+        {{input type="text"
+                class="player-input"
+                value=this.nameB
+                placeholder="Enter name for Player 2"}}
+      </div>
+      <p class="errorMessageLine">{{this.box2ErrorMessage}}</p>
+    </div>
+    <button {{on "click" this.updateFirstName}}>SUBMIT</button>
+  </div>
+{{else if this.Global.playerColorValidationError}}
+  <div class="colorValidation">
+    <h3>ENTER PLAYERS NAME & COLOR</h3>
+    <div class="wrapper">
+      <div class="row1">
+        <p>Player 1:</p>
+        <table class="colorTable">
+          <tr>
+            <td {{action "chooseColor" "A" "0"}} style="border: 3px solid {{this.firstColorSetBorderColor}}; background-color: {{this.trColor.A.[0]}}">
+              <div style="background-color: red"/>
+            </td>
+            <td {{action "chooseColor" "A" "1"}} style="border: 3px solid {{this.firstColorSetBorderColor}}; background-color: {{this.trColor.A.[1]}}">
+              <div style="background-color: orangered"/>
+            </td>
+            <td {{action "chooseColor" "A" "2"}} style="border: 3px solid {{this.firstColorSetBorderColor}}; background-color: {{this.trColor.A.[2]}}">
+              <div style="background-color: darkorange"/>
+            </td>
+            <td {{action "chooseColor" "A" "3"}} style="border: 3px solid {{this.firstColorSetBorderColor}}; background-color: {{this.trColor.A.[3]}}">
+              <div style="background-color: orange"/>
+            </td>
+          </tr>
+          <tr>
+            <td {{action "chooseColor" "A" "4"}} style="border: 3px solid {{this.firstColorSetBorderColor}}; background-color: {{this.trColor.A.[4]}}">
+              <div style="background-color: yellow"/>
+            </td>
+            <td {{action "chooseColor" "A" "5"}} style="border: 3px solid {{this.firstColorSetBorderColor}}; background-color: {{this.trColor.A.[5]}}">
+              <div style="background-color: yellowgreen"/>
+            </td>
+            <td {{action "chooseColor" "A" "6"}} style="border: 3px solid {{this.firstColorSetBorderColor}}; background-color: {{this.trColor.A.[6]}}">
+              <div style="background-color: green"/>
+            </td>
+            <td {{action "chooseColor" "A" "7"}} style="border: 3px solid {{this.firstColorSetBorderColor}}; background-color: {{this.trColor.A.[7]}}">
+              <div style="background-color: lightseagreen"/>
+            </td>
+          </tr>
+          <tr>
+            <td {{action "chooseColor" "A" "8"}} style="border: 3px solid {{this.firstColorSetBorderColor}}; background-color: {{this.trColor.A.[8]}}">
+              <div style="background-color: blue"/>
+            </td>
+            <td {{action "chooseColor" "A" "9"}} style="border: 3px solid {{this.firstColorSetBorderColor}}; background-color: {{this.trColor.A.[9]}}">
+              <div style="background-color: blueviolet"/>
+            </td>
+            <td {{action "chooseColor" "A" "10"}} style="border: 3px solid {{this.firstColorSetBorderColor}}; background-color: {{this.trColor.A.[10]}}">
+              <div style="background-color: palevioletred"/>
+            </td>
+            <td {{action "chooseColor" "A" "11"}} style="border: 3px solid {{this.firstColorSetBorderColor}}; background-color: {{this.trColor.A.[11]}}">
+              <div style="background-color: violet"/>
+            </td>
+          </tr>
+        </table>
+        <p class="errorMessageLine">{{this.box1ErrorMessage}}</p>
+      </div>
+
+      <div class="row2">
+        <p>Player 2:</p>
+        <table class="colorTable" style="border: 3px solid {{this.colorSetBorderColor}}">
+          <tr>
+            <td {{action "chooseColor" "B" "0"}} style="border: 3px solid {{this.secondColorSetBorderColor}}; background-color: {{this.trColor.B.[0]}}">
+              <div style="background-color: red"/>
+            </td>
+            <td {{action "chooseColor" "B" "1"}} style="border: 3px solid {{this.secondColorSetBorderColor}}; background-color: {{this.trColor.B.[1]}}">
+              <div style="background-color: orangered"/>
+            </td>
+            <td {{action "chooseColor" "B" "2"}} style="border: 3px solid {{this.secondColorSetBorderColor}}; background-color: {{this.trColor.B.[2]}}">
+              <div style="background-color: darkorange"/>
+            </td>
+            <td {{action "chooseColor" "B" "3"}} style="border: 3px solid {{this.secondColorSetBorderColor}}; background-color: {{this.trColor.B.[3]}}">
+              <div style="background-color: orange"/>
+            </td>
+          </tr>
+          <tr>
+            <td {{action "chooseColor" "B" "4"}} style="border: 3px solid {{this.secondColorSetBorderColor}}; background-color: {{this.trColor.B.[4]}}">
+              <div style="background-color: yellow"/>
+            </td>
+            <td {{action "chooseColor" "B" "5"}} style="border: 3px solid {{this.secondColorSetBorderColor}}; background-color: {{this.trColor.B.[5]}}">
+              <div style="background-color: yellowgreen"/>
+            </td>
+            <td {{action "chooseColor" "B" "6"}} style="border: 3px solid {{this.secondColorSetBorderColor}}; background-color: {{this.trColor.B.[6]}}">
+              <div style="background-color: green"/>
+            </td>
+            <td {{action "chooseColor" "B" "7"}} style="border: 3px solid {{this.secondColorSetBorderColor}}; background-color: {{this.trColor.B.[7]}}">
+              <div style="background-color: lightseagreen"/>
+            </td>
+          </tr>
+          <tr>
+            <td {{action "chooseColor" "B" "8"}} style="border: 3px solid {{this.secondColorSetBorderColor}}; background-color: {{this.trColor.B.[8]}}">
+              <div style="background-color: blue"/>
+            </td>
+            <td {{action "chooseColor" "B" "9"}} style="border: 3px solid {{this.secondColorSetBorderColor}}; background-color: {{this.trColor.B.[9]}}">
+              <div style="background-color: blueviolet"/>
+            </td>
+            <td {{action "chooseColor" "B" "10"}} style="border: 3px solid {{this.secondColorSetBorderColor}}; background-color: {{this.trColor.B.[10]}}">
+              <div style="background-color: palevioletred"/>
+            </td>
+            <td {{action "chooseColor" "B" "11"}} style="border: 3px solid {{this.secondColorSetBorderColor}}; background-color: {{this.trColor.B.[11]}}">
+              <div style="background-color: violet"/>
+            </td>
+          </tr>
+        </table>
+        <p class="errorMessageLine">{{this.box2ErrorMessage}}</p>
+      </div>
+    </div>
+    <button {{on "click" this.playerColorValidationErrorFUNC}}>SUBMIT</button>
+  </div>
 {{else}}
   <div class="ball-container">
     <Header/>
-    <Ball @color={{this.Global.player1Color}} class="1"/>
-    <Ball @color={{this.Global.player2Color}} @controls={{player2controls}}/>
+    <Ball @color={{this.Global.player1Color}}
+          class="1"/>
+    <Ball @color={{this.Global.player2Color}}
+          @controls={{player2controls}}/>
     <Mushroom/>
     <Lightning/>
 
     <div class="score">
-      <p>Player 1: {{this.Global.player1Score}}</p>
-      <p>Player 2: {{this.Global.player2Score}}</p>
+      <p>{{this.Global.player1Name}}: {{this.Global.player1Score}}</p>
+      <p>{{this.Global.player2Name}}: {{this.Global.player2Score}}</p>
     </div>
   </div>
 {{/if}}

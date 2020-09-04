@@ -1,12 +1,12 @@
 @import "reeset";
 
 $item-size: 50px;
-$lightning-size: 50px;
+$main-color: steelblue;
 
 // === General ===
 
 h3 {
-  color: steelblue;
+  color: $main-color;
   font-size: 30px;
   padding-bottom: 40px;
 }
@@ -16,7 +16,7 @@ p {
 }
 
 button {
-  background-color: steelblue;
+  background-color: $main-color;
   height: 30px;
   width: 120px;
   border-radius: 10px;
@@ -51,6 +51,82 @@ a {
 }
 
 //Route - Play
+.validationPage {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.validationPage label {
+  font-family: Courier, serif;
+  font-size: 21px;
+}
+
+.validationPage div {
+  margin-top: 20px;
+}
+
+.validationPage button {
+  margin: 30px 0 0 130px;
+}
+
+.validationPage .inputBox {
+  margin: 20px 0 0 550px;
+  width: 300px;
+  height: 45px;
+  border-radius: 20px;
+}
+
+.validationPage .player-input {
+  margin: 2px 0 0 10px;
+  width: 280px;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+}
+
+.validationPage .errorMessageLine {
+  color: darkred;
+  font-size: 12px;
+  text-align: center;
+  margin: 2px 0 0 120px;
+}
+
+.colorValidation {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.colorValidation p {
+  margin-left: -450px;
+  font-family: Courier, serif;
+  font-size: 21px;
+
+}
+
+.colorValidation .wrapper {
+  display: grid;
+  grid-template-columns: 20fr 20fr;
+  padding: 30px 0 30px 300px;
+}
+
+.colorValidation .errorMessageLine {
+  color: darkred;
+  font-size: 12px;
+  text-align: center;
+  margin: 2px 120px 0 0;
+}
+
+.colorValidation .colorTable td {
+  //border: 3px solid $main-color;
+  padding: 10px 10px 10px 10px;
+}
+
+.colorValidation .colorTable div {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
 .gameOverPage {
   margin-top: 180px;
   text-align: center;
@@ -60,6 +136,7 @@ a {
 .gameOverPage h3 {
   font-size: 80px;
 }
+
 .gameOverPage p {
   font-size: 50px;
 }
@@ -97,7 +174,7 @@ a {
 .ball {
   //width: $item-size;
   //height: $item-size;
-  background-color: gold;
+  //background-color: gold;
   border-radius: 50%;
   position: absolute;
 }
@@ -112,7 +189,7 @@ a {
 
 //Component Header
 .head {
-  background-color: steelblue;
+  background-color: $main-color;
   height: 90px;
 }
 
@@ -171,9 +248,9 @@ a {
   margin-left: -40px;
 }
 
-// Component Lightning
+//Component Lightning
 .lightning {
   position: absolute;
-  height: $lightning-size;
-  width: $lightning-size;
+  height: $item-size;
+  width: $item-size;
 }

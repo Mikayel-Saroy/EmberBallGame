@@ -10,7 +10,6 @@ const WIN_SCORE = 5;
 const INITIAL_SPEED = 6;
 const INITIAL_STEP = 2;
 const GROWTH_RATE = 20;
-const PLAYER_NAMES = ["PLAYER 1", "PLAYER 2"];
 
 export default class BallComponent extends Component {
   @service Global;
@@ -85,11 +84,11 @@ export default class BallComponent extends Component {
   checkIfWin() {
     if (this.Global.player1Score === WIN_SCORE) {
       this.Global.win = true;
-      this.Global.winner = PLAYER_NAMES[0];
+      this.Global.winner = this.Global.player1Name;
       this.reset();
     } else if (this.Global.player2Score === WIN_SCORE) {
       this.Global.win = true;
-      this.Global.winner = PLAYER_NAMES[1];
+      this.Global.winner = this.Global.player2Name;
       this.reset();
     } else {
       this.speed += 2;

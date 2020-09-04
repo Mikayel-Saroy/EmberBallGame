@@ -1,10 +1,11 @@
 @import "reeset";
 
+
 $item-size: 50px;
 $main-color: steelblue;
 
-// === General ===
 
+// === General ===
 h3 {
   color: $main-color;
   font-size: 30px;
@@ -175,9 +176,6 @@ a {
 // === COMPONENTS ===
 //Component Ball
 .ball {
-  //width: $item-size;
-  //height: $item-size;
-  //background-color: gold;
   border-radius: 50%;
   position: absolute;
 }

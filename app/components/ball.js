@@ -10,6 +10,11 @@ const WIN_SCORE = 5;
 const INITIAL_SPEED = 6;
 const INITIAL_STEP = 2;
 const GROWTH_RATE = 20;
+const DIRECTION_UP = "up";
+const DIRECTION_RIGHT = "right";
+const DIRECTION_DOWN = "down";
+const DIRECTION_LEFT = "left";
+
 
 export default class BallComponent extends Component {
   @service Global;
@@ -24,7 +29,7 @@ export default class BallComponent extends Component {
   elementSize = 0;
 
   get color() {
-    return this.args.color || 'gold';
+    return this.args.color;
   }
 
   get controls() {
@@ -53,19 +58,19 @@ export default class BallComponent extends Component {
       switch (event.code) {
         case this.controls.UP:
           this.stopMove();
-          this.move("up");
+          this.move(DIRECTION_UP);
           break;
         case this.controls.DOWN:
           this.stopMove();
-          this.move("down");
+          this.move(DIRECTION_DOWN);
           break;
         case this.controls.LEFT:
           this.stopMove();
-          this.move("left");
+          this.move(DIRECTION_LEFT);
           break;
         case this.controls.RIGHT:
           this.stopMove();
-          this.move("right");
+          this.move(DIRECTION_RIGHT);
           break;
         default:
           break;
@@ -119,13 +124,13 @@ export default class BallComponent extends Component {
 
   move(direction) {
     let directionCheckFunc;
-    if (direction === 'up') {
+    if (direction === DIRECTION_UP) {
       directionCheckFunc = this.canMove.up;
-    } else if (direction === "right") {
+    } else if (direction === DIRECTION_RIGHT) {
       directionCheckFunc = this.canMove.right;
-    } else if (direction === "down") {
+    } else if (direction === DIRECTION_DOWN) {
       directionCheckFunc = this.canMove.down;
-    } else if (direction === "left") {
+    } else if (direction === DIRECTION_LEFT) {
       directionCheckFunc = this.canMove.left;
     }
     this.interval = setInterval(() => {
@@ -133,16 +138,16 @@ export default class BallComponent extends Component {
         return this.stopMove();
       }
       switch (direction) {
-        case "up":
+        case DIRECTION_UP:
           this.top -= this.step;
           break;
-        case "right":
+        case DIRECTION_RIGHT:
           this.left += this.step;
           break;
-        case "down":
+        case DIRECTION_DOWN:
           this.top += this.step;
           break;
-        case "left":
+        case DIRECTION_LEFT:
           this.left -= this.step;
           break;
         default:

@@ -22,6 +22,7 @@ const COLOR_SET_COLOR_NAMES = [
 const ERROR_MESSAGE_COLOR = "CHOOSE COLOR";
 const MATH_FLOOR_LIMIT = 140;
 
+
 export default class PlayController extends Controller {
   @service Global;
   @tracked nameA = "";

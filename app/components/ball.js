@@ -79,7 +79,10 @@ export default class BallComponent extends Component {
   }
 
   reset() {
+    this.interval = null;
+    this.step = INITIAL_STEP;
     this.speed = INITIAL_SPEED;
+    this.elementSize = 0;
     this.ballHeight = INITIAL_SIZE;
     this.ballGrowth = 0;
   };
